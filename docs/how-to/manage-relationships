@@ -73,6 +73,6 @@ If we need to remove a task:
 todo.tasks.removeById(task2)
 ```
 
-Be careful, addById and removeById don't automaticaly save our document. We have to do it manually. 
+Be careful, addById and removeById don't automatically save our document. We have to do it manually. 
 
 For that, see https://github.com/cozy/cozy-client/blob/master/docs/guide.md#mutating-data 
