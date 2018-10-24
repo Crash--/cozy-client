@@ -65,7 +65,7 @@ Let's say we have this todo :
 
 If we need to add a new task : 
 ```jsx
-todo.taks.addById(task3);
+todo.tasks.addById(task3);
 ```
 
 If we need to remove a task: 
