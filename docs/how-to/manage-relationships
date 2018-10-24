@@ -1,0 +1,78 @@
+`Relationship` is the word used by Cozy-Client, to refer relation between documents. For that, we need to define our schema.
+
+Ex: 
+```jsx
+const schema = {
+    todos: {
+       doctype: 'io.cozy.todos',
+       relationships: {
+         tasks: {
+           doctype: 'io.cozy.tasks',
+           type: 'has-many'
+         }
+       }
+     }
+  }
+```
+
+Here, it's say that our `todos` document can be associated to many `tasks` documents.
+
+# How to fetch documents with their associated relationships ?
+
+Pretty simple, first let's create a `Query` to fetch our `todos` 
+
+```jsx
+<Query
+  query={client =>
+    client.find('io.cozy.todos')
+  }
+>
+{({ data: todos, fetchStatus }) => {
+    if (fetchStatus === 'loading') {
+      return 'loading'
+    }
+    todos.map(todo => console.log(todo))
+    return null
+  }}
+</Query>
+```
+
+Our `todo` object will have its own properties, but also its tasks. 
+
+See, we have a `tasks` key. `tasks` is the name we gave to our relationship when defining it inside our schema. We can name it as you want but changing the key in your schema. 
+
+So, to access to associated tasks, you have to map on `todo.tasks.data` 
+
+## How to add / remove relationship 
+
+Let's say we have this todo : 
+```jsx 
+{
+  _id: 1,
+  label: 'My first todo', 
+  taks: {
+    data: [
+      {
+        _id: task1
+      },
+      {
+        _id: task2
+      }
+    ]
+  }
+}
+```
+
+If we need to add a new task : 
+```jsx
+todo.tasks.addById(task3);
+```
+
+If we need to remove a task: 
+```jsx
+todo.tasks.removeById(task2)
+```
+
+Be careful, addById and removeById don't automatically save our document. We have to do it manually. 
+
+For that, see https://github.com/cozy/cozy-client/blob/master/docs/guide.md#mutating-data 
