@@ -15,7 +15,7 @@ const schema = {
   }
 ```
 
-Here, it's say that our `todos` document can be associated to `has-many` `tasks` document.
+Here, it's say that our `todos` document can be associated to many `tasks` documents.
 
 # How to fetch documents with their associated relationships ?
 
