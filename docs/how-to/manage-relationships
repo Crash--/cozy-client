@@ -41,7 +41,7 @@ Our `todo` object will have its own properties, but also its tasks.
 
 See, we have a `tasks` key. `tasks` is the name we gave to our relationship when defining it inside our schema. We can name it as you want but changing the key in your schema. 
 
-So, to access to associated tasks, you have to map on `todo.taks.data` 
+So, to access to associated tasks, you have to map on `todo.tasks.data` 
 
 ## How to add / remove relationship 
 
