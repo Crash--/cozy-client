@@ -1,4 +1,4 @@
-`Relationship` is the word used by Cozy-Client, to refer relation / association between documents. For that, we need to define our schema.
+`Relationship` is the word used by Cozy-Client, to refer relation between documents. For that, we need to define our schema.
 
 Ex: 
 ```jsx
