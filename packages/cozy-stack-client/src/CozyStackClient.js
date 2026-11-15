@@ -157,7 +157,9 @@ class CozyStackClient {
       }
     }
 
-    if (!headers.Authorization) {
+    // fetch implementations may reject a null header value: send none
+    // while the client holds no token.
+    if (!headers.Authorization && this.getAuthorizationHeader()) {
       headers.Authorization = this.getAuthorizationHeader()
     }
 

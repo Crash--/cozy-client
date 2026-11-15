@@ -96,7 +96,6 @@ Array [
     "credentials": "include",
     "headers": Object {
       "Accept": "application/json",
-      "Authorization": null,
       "Content-Type": "application/json",
     },
     "method": "POST",
