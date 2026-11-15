@@ -178,6 +178,19 @@ describe('CozyStackClient', () => {
       )
     })
 
+    it('should send no Authorization header without a token', async () => {
+      const anonymous = new CozyStackClient({ uri: FAKE_INIT_OPTIONS.uri })
+      await anonymous.fetch('GET', '/data/io.cozy.todos')
+      expect(fetch).toHaveBeenLastCalledWith(
+        'http://cozy.tools:8080/data/io.cozy.todos',
+        {
+          method: 'GET',
+          credentials: 'include',
+          headers: {}
+        }
+      )
+    })
+
     it('should call onRevocationChange with true if client is revoked', async () => {
       fetch.mockRejectedValueOnce({ message: 'Client not found' })
       await client.fetch('GET', '/data/anyroute').catch(() => {})
